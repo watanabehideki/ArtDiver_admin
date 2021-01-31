@@ -1,5 +1,5 @@
 class Gallery < ApplicationRecord
-
+  has_many :exhibitions, dependent: :destroy
   has_one_attached :gallery_image  
   
   def display_image

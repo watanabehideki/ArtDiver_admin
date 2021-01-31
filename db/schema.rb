@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_10_135249) do
+ActiveRecord::Schema.define(version: 2021_01_11_032150) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,23 @@ ActiveRecord::Schema.define(version: 2021_01_10_135249) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
+  create_table "exhibitions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "title"
+    t.text "content"
+    t.string "tel"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "open_time"
+    t.string "holiday"
+    t.text "url"
+    t.string "admission"
+    t.bigint "gallery_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gallery_id", "created_at"], name: "index_exhibitions_on_gallery_id_and_created_at"
+    t.index ["gallery_id"], name: "index_exhibitions_on_gallery_id"
+  end
+
   create_table "galleries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
@@ -120,4 +137,5 @@ ActiveRecord::Schema.define(version: 2021_01_10_135249) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "exhibitions", "galleries"
 end
