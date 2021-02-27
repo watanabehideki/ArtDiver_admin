@@ -14,12 +14,15 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: <%= ENV.fetch('MYSQL_ROOT_PASSWORD') { 'mysql_root_password' } %>
   host: mysql
+  password: <%= ENV.fetch('MYSQL_ROOT_PASSWORD') { 'mysql_root_password' } %>
 
 development:
   <<: *default
   database: artdiver_development
+  host: mysql
+  password: <%= ENV.fetch('MYSQL_ROOT_PASSWORD') { 'mysql_root_password' } %>
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,6 +30,7 @@ development:
 test:
   <<: *default
   database: artdiver_test
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +53,6 @@ test:
 #
 production:
   <<: *default
-  database: artdiver_production
-  username: artdiver
-  password: <%= ENV['ARTDIVER_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  host: <%= ENV['DB_HOST'] %>
+  url: <%= ENV['DB_URL'] %>
