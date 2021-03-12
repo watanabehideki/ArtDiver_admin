@@ -1,8 +1,6 @@
 ActiveAdmin.setup do |config|
 
-  config.register_javascript  Ckeditor.cdn_url
-  config.register_javascript 'ckeditor/config.js'
-  
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout

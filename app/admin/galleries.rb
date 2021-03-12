@@ -5,7 +5,7 @@ ActiveAdmin.register Gallery do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :email, :content, :location, :tel, :open_time, :holiday, :url, :gallery_image, :image_file
+  permit_params :name, :email, :content, :location, :tel, :open_time, :holiday, :url, :gallery_image
   #
   # or
   #
@@ -48,7 +48,7 @@ ActiveAdmin.register Gallery do
       f.input :holiday
       f.input :url
       f.input :content # ここでckeditorを呼び出す
-      f.input :gallery_image, as: :file # active storageを使って画像UPする際はas: :file
+      f.input :gallery_image # active storageを使って画像UPする際はas: :file
       f.actions
     end
   end
@@ -65,8 +65,9 @@ ActiveAdmin.register Gallery do
       row :content do |r|
         r.content.html_safe # html_safeでhtmlコンテンツを表示
       end
-      row :gallery_image do |r|
-        image_tag url_for(r.display_image)
+      row :gallery_image do
+        image_tag gallery.gallery_image.url
+
       end
     end
   end

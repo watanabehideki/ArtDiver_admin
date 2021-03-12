@@ -30,9 +30,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'activeadmin'
 gem 'active_admin_flat_skin'
-gem 'ckeditor', git: "https://github.com/galetahub/ckeditor", branch: "master"
 gem 'mini_magick',                 '4.9.5' 
 gem 'image_processing',           '1.9.3'
+gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
 gem 'aws-sdk-s3', '1.46.0', require: false
 gem 'dotenv-rails'
 gem  'minitest', '5.14.2 '
